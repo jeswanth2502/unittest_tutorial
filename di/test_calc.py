@@ -16,10 +16,14 @@ class MyTestCase(unittest.TestCase):
         print("teardown")
     def test_add(self):
         print("Test_add")
-        self.assertEqual(calc.Car.add(self.obj1.x,self.obj2.x),12)
+        self.assertEqual(self.obj1.add(self.obj2.x),12)
     def test_sub(self):
-
         print("Test_sub")
-        self.assertTrue(calc.Car.sub(self.obj1.x,self.obj2.x),8)
+        self.assertTrue(self.obj1.sub(self.obj2.x),8)
+
+    def test_even(self):
+        for i in range(0, 6):
+            with self.subTest(i=i):
+                self.assertEqual(i % 2, 0)
 if __name__ == '__main__':
     unittest.main()
